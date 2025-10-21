@@ -1,12 +1,10 @@
 tailscaleSelf=$(tailscale status --json | my-getjson Self)
-tailscaleID=$(echo "$tailscaleSelf" | my-getjson ID)
-tailscaleHostName=$(echo "$tailscaleSelf" | my-getjson HostName)
-tailscaleIP=$(echo "$tailscaleSelf" | my-getjson TailscaleIPs | my-getjson '[0]')
-tailscaleTags=$(echo "$tailscaleSelf" | my-getjson Tags)
+tailscaleID=$(echo "$tailscaleSelf" | my-getjson ID | tr -d '"')
+tailscaleHostName=$(echo "$tailscaleSelf" | my-getjson HostName | tr -d '"')
+tailscaleIP=$(echo "$tailscaleSelf" | my-getjson TailscaleIPs | my-getjson '[0]' | tr -d '"')
 typeOfOS=$(cat /etc/*-release | grep '^NAME=' | cut -d= -f2 | tr -d '"')
 
 echo "Tailscale ID: $tailscaleID"
 echo "Tailscale HostName: $tailscaleHostName"
 echo "Tailscale IP: $tailscaleIP"
-echo "Tailscale Tags: $tailscaleTags"
 echo "Operating System: $typeOfOS"
