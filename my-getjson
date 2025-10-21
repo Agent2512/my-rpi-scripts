@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+# cat data.json | getjson keyname
+import sys
+import json
+
+raw_input = sys.stdin.read()
+d = json.loads(raw_input)
+selector = sys.argv[1]
+# selector satrswith [ and endswith ] means array index
+if selector.startswith('[') and selector.endswith(']'):
+    index = int(selector[1:-1])
+    selected_data = d[index]
+else:
+    selected_data = d.get(selector, '')
+print(json.dumps(selected_data))
