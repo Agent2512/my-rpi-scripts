@@ -12,5 +12,4 @@ chmod +x /usr/bin/my-getinfo
 
 echo "my-getjson and my-getinfo scripts have been installed to /usr/bin/"
 
-# Execute the main installation script
-# curl -fsSL https://raw.githubusercontent.com/agent2512/my-rpi-scripts/main/install.sh | bash
+# for use curl -fsSL https://raw.githubusercontent.com/agent2512/my-rpi-scripts/main/install.sh | bash
