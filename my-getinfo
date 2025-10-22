@@ -3,8 +3,10 @@ tailscaleID=$(echo "$tailscaleSelf" | my-getjson ID | tr -d '"')
 tailscaleHostName=$(echo "$tailscaleSelf" | my-getjson HostName | tr -d '"')
 tailscaleIP=$(echo "$tailscaleSelf" | my-getjson TailscaleIPs | my-getjson '[0]' | tr -d '"')
 typeOfOS=$(cat /etc/*-release | grep '^NAME=' | cut -d= -f2 | tr -d '"')
+macAddress=$(cat /sys/class/net/eth0/address | tr -d '\n')
 
 echo "Tailscale ID: $tailscaleID"
 echo "Tailscale HostName: $tailscaleHostName"
 echo "Tailscale IP: $tailscaleIP"
 echo "Operating System: $typeOfOS"
+echo "MAC Address: $macAddress"
